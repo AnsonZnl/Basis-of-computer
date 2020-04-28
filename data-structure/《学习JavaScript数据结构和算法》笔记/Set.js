@@ -1,49 +1,86 @@
 // 使用对象来模拟集合 Set
 
-class MySet{
-    constructor(){
+class MySet {
+    constructor() {
         this.items = {};
     }
-    has(val){
+    has(val) {
         return this.items.hasOwnProperty(val)
     }
-    add(val){
-        if(!this.has(val)){
-            this.items[val +''] = val;
+    add(val) {
+        if (!this.has(val)) {
+            this.items[val + ''] = val;
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    remove(val){
-        if(this.has(val)){
+    remove(val) {
+        if (this.has(val)) {
             delete this.items[val];
             return true;
-        }else{  
+        } else {
             return false
         }
     }
-    clear(){
+    clear() {
         this.items = {}
     }
-    size(){
+    size() {
         return Object.keys(this.items).length
     }
-    values(){
+    values() {
         return Object.keys(this.items)
     }
-    union(otherSet){
+    // 并集
+    union(otherSet) {
         let unionSet = new MySet();
         let values = this.values();
-        for(var i=0; i< values.length; i++){
+        for (var i = 0; i < values.length; i++) {
             unionSet.add(values[i])
         }
         values = otherSet.values();
-        for(var i=0; i< values.length; i++){
+        for (var i = 0; i < values.length; i++) {
             unionSet.add(values[i])
         }
         return unionSet;
-     }
+    }
+    // 交集
+    intersection(otherSet) {
+        let intersectionSet = new mySet();
+        let values = this.values();
+        for(let i=0; i<values.length; i++){
+            if(otherSet.has(values[i])){
+                intersectionSet.add(values[i])
+            }
+        }
+        return intersectionSet;
+    }
+    // 差集
+    difference(otherSet){
+        let differenceSet = new mySet()
+        let values = this.values();
+        for(let i = 0; i<values.length; i++){
+            if(!otherSet.has(values[i])){
+                differenceSet.add(values[i])
+            }
+        }
+        return differenceSet
+    }
+    // 子集
+    subset(otherSet){
+        if(this.size() > otherSet.size()){
+            return false
+        }else{
+            let values = this.values();
+            for(let i=0; i<values.length; i++){
+                if(!otherSet.has(values[i])){
+                    return false
+                }
+            }
+            return true;
+        }
+    }
 }
 
 // let set1 = new MySet();
@@ -62,29 +99,29 @@ class MySet{
  * 子集：对于给定两个集合，验证一个集合，是否是另一个元素的子集。
  */
 
- // 并集
- /**
-  *   union(otherSet){
-        let unionSet = new MySet();
-        let values = this.values();
-        for(var i=0; i< values.length; i++){
-            unionSet.add(values[i])
-        }
-        values = otherSet.values();
-        for(var i=0; i< values.length; i++){
-            unionSet.add(values[i])
-        }
-        return unionSet;
-     }
-  * 
-  */
+// 并集
+/**
+ *   union(otherSet){
+       let unionSet = new MySet();
+       let values = this.values();
+       for(var i=0; i< values.length; i++){
+           unionSet.add(values[i])
+       }
+       values = otherSet.values();
+       for(var i=0; i< values.length; i++){
+           unionSet.add(values[i])
+       }
+       return unionSet;
+    }
+ * 
+ */
 
-let setA= new MySet();
+let setA = new MySet();
 setA.add(1)
 setA.add(2)
 setA.add(3)
 
-let setB= new MySet();
+let setB = new MySet();
 setB.add(3)
 setB.add(4)
 setB.add(5)
