@@ -46,3 +46,35 @@ class myMap {
         return this.items;
     }
 }
+
+// 散列表
+// 散列算法的作用是尽可能快的在数据结构中找到一个值
+class HashTable{
+    constructor(){
+        this.table = []
+    }
+    loseloseHashCode(key){
+        let hash = 0;
+        for(let i= 0; i<key.length; i++){
+            hash += key.charCodeAt(i)
+        }
+        // console.log(hash)
+        return hash % 37
+    }
+    put(key, value){
+        let position = this.loseloseHashCode(key);
+        console.log(position + '-' + key)
+        this.table[position] = value
+    }
+    get(key){
+        return thia.table(this.loseloseHashCode(key))
+    }
+    remove(key){
+        this.table[this.loseloseHashCode(key)] = undefined
+    }
+}
+let hash = new HashTable()
+hash.put('Gandalf0', 'gandalf@email.com0')
+hash.put('Gandalf1', 'gandalf@email.com1')
+hash.put('Gandalf2', 'gandalf@email.com2')
+console.log(JSON.stringify(hash))
