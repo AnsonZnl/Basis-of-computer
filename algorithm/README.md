@@ -9,9 +9,17 @@
 - 对每一组相邻元素作同样的工作，从开始第一对到结尾的最后一对，这步做完，最后的元素会是最大的数。
 - 针对所有的元素重复以上步骤，直到没有任何一对数字需要比较。
 
-![冒泡排序动画演示](https://mmbiz.qpic.cn/mmbiz_gif/D67peceibeISwc3aGibUlvZ0XqVnbWtBRiaC1S2jpXRzXcZVn0aP6BYnkO2FJicNstxicHmf9wMIic5FV0I75ptv5jYA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1)
+![冒泡排序动画演示](./img/bubble.gif)
 
 ### 选择排序
+> 选择排序是一种原址比较排序算法，选择排序大致的思路就是找到数据结构中最小的值并将其放在第一次，然后找到第二小的值，将其放在第二位...以此类推
+
+**步骤**
+- 找到最小的值，和第一个元素交换。
+- 知道第二小的值，和第二个元素交换
+- 以此类推..
+
+![选择排序动画演示](./img/selection.gif)
 
 ### 插入排序
 
