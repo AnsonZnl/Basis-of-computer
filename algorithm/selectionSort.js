@@ -17,3 +17,5 @@ function selection(arr) {
     }
     return arr;
 }
+let arrSort = selection(arr);
+console.log(arrSort)
